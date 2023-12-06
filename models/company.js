@@ -11,4 +11,4 @@ const companySchema = new Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Company', performerSchema);
+module.exports = mongoose.model('Company', companySchema);

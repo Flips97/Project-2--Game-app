@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<div>Before adding, please ensure that the Company is not in the following list:</div>
+<section>
+    <% companies.forEach(function(c) { %>
+        <article><%= c.name %></article>
+    <% }) %>
+</section>
+
+<form id="add-company-form" action="/performers" method="POST">
+    <label>Company:</label>
+    <input type="text" name="Company">
+    <input type="submit" value="Add Company">
+
+</form>
+
+<%- include('../partials/footer') %>
