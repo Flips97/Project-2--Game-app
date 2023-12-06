@@ -24,7 +24,7 @@ const reviewSchema = new Schema({
   })
 
 const gameSchema = new Schema({
-    title: { title: String },
+    title: { type: String },
     company: [{
         type: Schema.Types.ObjectId,
         ref: 'Company'
