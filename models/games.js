@@ -36,7 +36,7 @@ const gameSchema = new Schema({
         },
         min: 1958
     },
-    review: [reviewSchema]
+    reviews: [reviewSchema]
 }, {
     timestamps: true
 })

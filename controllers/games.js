@@ -16,6 +16,7 @@ async function index(req, res) {
 async function show(req, res) {
     const game = await Game.findById(req.params.id).populate('company')
     const companies = await Company.find({ _id: { $nin: game.company } }).sort('name')
+    
     res.render('games/show', { title: 'Game Details', game, companies })
 }
 
