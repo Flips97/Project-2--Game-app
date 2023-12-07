@@ -3,7 +3,15 @@ const Game = require('../models/games')
 
 module.exports = {
     new: newCompany,
-    create
+    create,
+    addToCompanies
+}
+
+async function addToCompanies(req, res) {
+    const game = await Game.findById(req.params.id)
+    game.company.push(req.body.companyId)
+    await game.save()
+    res.redirect(`/games/${game._id}`)
 }
 
 async function newCompany(req, res) {

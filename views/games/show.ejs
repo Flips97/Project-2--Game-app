@@ -3,10 +3,25 @@
 <section id ="show-page">
     <div>Title:</div>
     <div><%= game.title %></div>
-    <div><%= game.companay %></div>
     <div>Release Year:</div>
     <div><%= game.releaseYear %></div>
+    <div>Company:</div>
+    <ul>
+        <%- game.company.map(c =>
+        `<li>${c.name}</li>`
+        ).join('') %>
+    </ul>
 </section>
+<% if (!game.company) { %>
+    <form id="add-company" action="/games/<%= game._id %>/companies" method="POST">
+        <select name="companyId">
+            <%- companies.map(c =>
+            `<option value="${c._id}">${c.name}</option>`
+            ).join('') %>
+        </select>
+        <button type="submit">Add to game</button> 
+    </form>
+<% } %>
 
 
 
