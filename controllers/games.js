@@ -5,7 +5,9 @@ module.exports = {
     index,
     new: newGame,
     create,
-    show
+    show,
+    edit,
+    update
 }
 
 async function index(req, res) {
@@ -38,5 +40,30 @@ async function create(req, res) {
     } catch(err) {
         console.log(err)
         res.render('games/new', { errorMsg: err.message })
+    }
+}
+
+async function edit(req, res) {
+    req.body.user= req.user._id
+    req.body.userName = req.user.name
+    req.body.userAvatar = req.user.avatar
+
+    const game = await Game.findOne({ _id: req.params.id, })
+    
+    if(!game) return res.redirect('/games')
+    res.render('games/edit', { title: 'Edit Game', game } )
+} 
+
+async function update(req, res) {
+    console.log(req.body)
+    try {
+       await Game.findOneAndReplace(
+            { _id: req.params.id },
+            req.body,
+            { new: true }
+        )        
+        res.redirect(`/games/${req.params.id}`)        
+    } catch(err) {
+        console.log(err)       
     }
 }

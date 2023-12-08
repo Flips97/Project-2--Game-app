@@ -11,6 +11,9 @@
         `<li>${c.name}</li>`
         ).join('') %>
     </ul>
+    <% if(user) { %>
+        <a href="/games/<%= game._id %>/edit" ? 'class="active"' : ''>Edit Game</a>
+    <% } %>
 </section>
 
 <% if(!game.company.length) { %>
