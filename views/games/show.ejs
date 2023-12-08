@@ -1,4 +1,5 @@
 <%- include('../partials/header') %>
+<script src="/javascripts/script.js"></script>
 
 <section id ="show-page">
     <div>Title:</div>
@@ -13,7 +14,7 @@
     </ul>
     <% if(user) { %>
         <a href="/games/<%= game._id %>/edit" ? 'class="active"' : ''>Edit Game</a>
-    <% } %>
+        <% } %>
 </section>
 
 <% if(!game.company.length) { %>
@@ -25,13 +26,17 @@
         </select>
         <button type="submit">Add to game</button> 
     </form>
-<% } %>
+    <% } %>
+    
+    
+    <div id="all-reviews"> 
+        <section>
+            <br><br><h2>Reviews</h2>
+            <button id="btn">↓</button>
 
-
-    <br><br><h2>Reviews</h2>
-    <% if (user) { %>
-        <form id="add-review-form" method="POST"
-        action="/games/<%= game._id %>/reviews">
+        <% if (user) { %>
+            <form id="add-review-form" method="POST"
+            action="/games/<%= game._id %>/reviews">
             <label>Review:</label>
             <textarea name="content"></textarea>
             <label>Rating:</label>
@@ -41,9 +46,9 @@
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-            </select>
-            <input type="submit" value="Add Review">            
-        </form>
+        </select>
+        <input type="submit" value="Add Review">            
+    </form>
     <% } %>
     <% if (game.reviews.length) { %>
         <table>
@@ -69,21 +74,24 @@
                                 <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
                                     <button type="submit">X</button>
                                 </form>
-                            <% } %>
-                        </td>
-                    </tr>
-                <% }) %>
-                <tr>
-                    <td colspan="3"></td>
-                    <td><strong><%= (total / game.reviews.length).toFixed(1) %></strong></td>
-                </tr>
-            </tbody>
+                                <% } %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td><strong><%= (total / game.reviews.length).toFixed(1) %></strong></td>
+                        </tr>
+                    </tbody>
         </table>
-    <% } else { %>
-        <h4>No Reviews Yet</h4>
-    <% } %>
-
+        <% } else { %>
+            <h4>No Reviews Yet</h4>
+            <% } %>
+        </section>
+</div>
+        
 </section>
+
 
 
 <%- include('../partials/footer') %>

@@ -55,7 +55,6 @@ async function edit(req, res) {
 } 
 
 async function update(req, res) {
-    console.log(req.body)
     try {
        await Game.findOneAndReplace(
             { _id: req.params.id },
