@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<script src="/javascripts/script.js"></script>
+<script defer src="/javascripts/script.js"></script>
 
 <section id ="show-page">
     <div>Title:</div>
@@ -29,10 +29,10 @@
     <% } %>
     
     
-    <div id="all-reviews"> 
+    <br><br><h2>Reviews</h2>
+    <button id="btn">↓</button>
+    <div id="reviews"> 
         <section>
-            <br><br><h2>Reviews</h2>
-            <button id="btn">↓</button>
 
         <% if (user) { %>
             <form id="add-review-form" method="POST"
@@ -90,7 +90,7 @@
         </section>
 </div>
         
-</section>
+
 
 
 

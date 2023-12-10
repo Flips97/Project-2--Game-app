@@ -1,8 +1,9 @@
 console.log("js loaded")
-
-let btn = document.getElementById('btn')
-let div = document.getElementById('all-reviews')
-console.log()
+console.log(document)
+let btn = document.querySelector('#btn')
+let div = document.querySelector('#reviews')
+console.log(btn)
+console.log(div)
 
 btn.addEventListener('click', () => {
     if(div.style.display === 'none'){
