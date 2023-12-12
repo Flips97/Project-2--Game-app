@@ -1,14 +1,150 @@
+* {
+  box-sizing: border-box;
+  font-family: Helvetica;
+  color: #0E1C36;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: 
+    "nav"
+    "main"
 }
 
-a {
-  color: #00B7FF;
+body > nav {
+  grid-area: nav;
+  background-color: #8FA2B9;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px 0 30px;
+}
+
+body > main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #A3B2C9;
+  padding: 20px;
+  overflow-y: scroll;
+}
+
+body > main h1:first-child {
+  margin-bottom: 50px;
+}
+
+nav > a {
+  margin: 20px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 
+nav > a:hover:not(.active) {
+  color: white;
+  background-color: #424748;
+}
 
+nav > a.active {
+  color: white;
+  cursor: default;
+}
+
+#new-form {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, minmax(auto, 22rem));
+}
+
+#new-form *,
+#add-review-form *,
+#add-company-form * {
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#new-form input[type="submit"] {
+  grid-column: span 2;
+  width: 10rem;
+  margin-left: auto;
+}
+
+table {
+  font-size: 20px;
+}
+
+table thead th {
+  padding: 5px;
+  border-bottom: 2px solid #424748;
+}
+
+table td {
+  padding: 10px;
+  text-align: center;
+}
+
+#list td:nth-child(2), #list td:nth-child(3){
+  min-width: 100px;
+}
+
+#list a {
+  border-radius: 4px;
+  background-color: #B8C0C2;
+  padding: 4px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+#list a:hover {
+  background-color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#show-page {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+}
+
+#show-page div:nth-child(even) {
+  font-weight: bold;
+}
+
+#add-review-form,
+#add-company-form {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+  margin-bottom: 2rem;
+}
+/* 
+hr {
+  color: #424748
+} */
+
+#company-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  border: 2px solid #626F88;
+  border-radius: .5rem;
+  margin: .5rem 0 2rem;
+}
+
+.badge {
+  background-color: #B8C0C2;
+  padding: .5rem;
+  margin: .5rem;
+  border-radius: .3rem;
+  font-size: .8rem;
+  text-align: center;
+}
 
 .login {
   display: flex;
@@ -19,4 +155,56 @@ a {
 
 .login img {
   height: 30px;
+}
+
+.review-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-user img {
+  border-radius: 50%;
+  height: 40px;
+}
+
+#btn {
+ display: inline-block;
+ border-radius: 0.5px;
+ font:bold;
+ border: none;
+ text-align: center;
+ padding: 10px;
+ width: 40px;
+ transition: all 0.5s;
+ margin: 5px;
+}
+
+#btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#btn:hover span {
+  padding-right: 25px;
+}
+
+#btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }

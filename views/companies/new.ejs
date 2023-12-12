@@ -1,9 +1,9 @@
 <%- include('../partials/header') %>
 
 <div>Before adding, please ensure that the Company is not in the following list:</div>
-<section>
+<section id="company-container">
     <% companies.forEach(function(c) { %>
-        <article><%= c.name %></article>
+        <article class="badge"><%= c.name %></article>
     <% }) %>
 </section>
 
